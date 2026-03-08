@@ -1,0 +1,1 @@
+app.controller("invoicesCtrl", function($scope) {});

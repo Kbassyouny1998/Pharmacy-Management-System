@@ -1,0 +1,118 @@
+<body ng-controller="dashboardCtrl" ng-init="loadDashboard()">
+
+<!-- Dashboard Cards -->
+<div class="container dashboard-container">
+<h2 class="dashboard-title text-center">Admin Dashboard</h2>
+
+<div class="row g-4 text-center">
+
+    <!-- Total Medicines -->
+    <div class="col-md-3">
+        <div class="card stat-card border-success">
+            <div class="card-body">
+                <h6 class="stat-title text-muted">Total Medicines</h6>
+                <h2 class="stat-number text-success">{{totalMedicines}}</h2>
+                <p class="stat-desc">Medicines in stock</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Low Stock -->
+    <div class="col-md-3">
+        <div class="card stat-card border-warning">
+            <div class="card-body">
+                <h6 class="stat-title text-muted">Low Stock (≤10)</h6>
+                <h2 class="stat-number text-warning">{{lowStock}}</h2>
+                <p class="stat-desc">Medicines running low</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Out of Stock -->
+    <div class="col-md-3">
+        <div class="card stat-card border-danger">
+            <div class="card-body">
+                <h6 class="stat-title text-muted">Out of Stock</h6>
+                <h2 class="stat-number text-danger">{{outOfStock}}</h2>
+                <p class="stat-desc">Medicines unavailable</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Customers -->
+    <div class="col-md-3">
+        <div class="card stat-card border-primary">
+            <div class="card-body">
+                <h6 class="stat-title text-muted">Customers</h6>
+                <h2 class="stat-number text-primary">{{totalCustomers}}</h2>
+                <p class="stat-desc">Registered customers</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Admins -->
+    <div class="col-md-3">
+        <div class="card stat-card border-secondary">
+            <div class="card-body">
+                <h6 class="stat-title text-muted">Admins</h6>
+                <h2 class="stat-number text-secondary">{{totalAdmins}}</h2>
+                <p class="stat-desc">Registered admins</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Invoices -->
+    <div class="col-md-3">
+        <div class="card stat-card border-info">
+            <div class="card-body">
+                <h6 class="stat-title text-muted">Invoices</h6>
+                <h2 class="stat-number text-info">{{totalInvoices}}</h2>
+                <p class="stat-desc">Invoices generated</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<!-- Recent Medicines Table -->
+<h4 class="table-title">Recent Medicines</h4>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered dashboard-table">
+        <thead class="table-success">
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="med in medicines">
+                <td>{{med.name}}</td>
+                <td>{{med.category}}</td>
+                <td>{{med.stock}}</td>
+                <td>
+                    <span class="badge"
+                          ng-class="{
+                            'bg-success': med.stock > 10,
+                            'bg-warning text-dark': med.stock > 0 && med.stock <= 10,
+                            'bg-danger': med.stock === 0
+                          }">
+
+                        <span ng-if="med.stock > 10">In Stock</span>
+                        <span ng-if="med.stock > 0 && med.stock <= 10">Low Stock</span>
+                        <span ng-if="med.stock === 0">Out of Stock</span>
+
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+</body>

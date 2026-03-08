@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pharmacyApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Pharmacy Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="services/medicineService.js"></script>
+    <script src="services/customerService.js"></script>
+    <script src="services/invoiceService.js"></script>
+
+    <script src="controllers/loginController.js"></script>
+    <script src="controllers/dashboardController.js"></script>
+    <script src="controllers/medicinesController.js"></script>
+    <script src="controllers/aEMedicineController.js"></script>
+    <script src="controllers/customersController.js"></script>
+    <script src="controllers/aECustomerController.js"></script>
+    <script src="controllers/invoicesController.js"></script>
+    <script src="controllers/reportsController.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#!/">Pharmacy</a>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/medicines">Medicines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/customers">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/invoices">Invoices</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/reports">Reports</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div ng-view></div>
+    </div>
+
+    
+
+</body>
+</html>

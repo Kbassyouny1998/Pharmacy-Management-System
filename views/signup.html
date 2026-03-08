@@ -1,0 +1,52 @@
+<html>
+    <div class="container vh-100 d-flex justify-content-center align-items-center"
+     ng-controller="signupCtrl">
+
+        <div class="card shadow" style="width:400px">
+
+            <div class="card-body">
+
+                <h4 class="text-center mb-4">Create Account</h4>
+
+                <form ng-submit="signup()">
+
+                    <div class="mb-3">
+                        <label>Username</label>
+                        <input type="text" class="form-control"  ng-model="user.name">
+                        <small class="text-danger" ng-if="errors.name"> {{errors.name}} </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input type="email" class="form-control" ng-model="user.email">
+                        <small class="text-danger" ng-if="errors.email"> {{errors.email}} </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <input type="password" class="form-control" ng-model="user.password">
+                        <small class="text-danger" ng-if="errors.password"> {{errors.password}} </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" ng-model="confirmPassword">
+                        <small class="text-danger" ng-if="errors.confirm"> {{errors.confirm}} </small>
+                    </div>
+
+                    <button class="btn btn-primary w-100"> Sign Up </button>
+                    <div class="text-center mt-3">
+                        <small>
+                            Already have an account?
+                            <a href="#!/login">Login</a>
+                        </small>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</html>

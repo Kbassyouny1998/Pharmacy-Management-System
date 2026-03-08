@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="pharmacyApp" ng-controller="homeCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>Pharmacy Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Reset and full viewport */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Hero Section */
+        .hero {
+           width: 100%;   
+            height: 100vh;
+            background: url("https://trchealthcare.com/wp-content/uploads/2022/08/hospitalpharmacyshelves.png") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            background: rgba(0,0,0,0.5);
+            padding: 20px 40px;
+            border-radius: 10px;
+        }
+
+        /* Cards Section */
+        .cards-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px auto 80px auto;
+            padding: 0 15px;
+        }
+
+        .feature-card {
+            width: 18rem;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-card img {
+            width: auto;
+            height: 150px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Center Medicines card for user mode */
+        .user-single-card {
+            width: auto;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="display-5 fw-bold">Welcome to Pharmacy Management System</h1>
+    </section>
+
+    <!-- Cards Section -->
+    <div class="cards-wrapper">
+
+        <!-- Medicines card: always visible -->
+        <div class="card shadow feature-card" ng-class="{'user-single-card': !isAdmin}">
+            <img src="https://cdn-icons-png.flaticon.com/512/2966/2966487.png" class="card-img-top p-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Medicines</h5>
+                <p class="card-text">Manage pharmacy medicine inventory.</p>
+                <button class="btn btn-success btn-sm" ng-click="goMedicines()">Go to Medicines</button>
+            </div>
+        </div>
+
+        <!-- Customers card: admin only -->
+        <div class="card shadow feature-card" ng-if="isAdmin">
+            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" class="card-img-top p-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Customers</h5>
+                <p class="card-text">Manage pharmacy customer information.</p>
+                <button class="btn btn-success btn-sm" ng-click="goCustomers()">Manage Customers</button>
+            </div>
+        </div>
+
+        <!-- Invoices card: admin only -->
+        <div class="card shadow feature-card" ng-if="isAdmin">
+            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920349.png" class="card-img-top p-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Invoices</h5>
+                <p class="card-text">Generate your pharmacy invoices easily.</p>
+                <button class="btn btn-success btn-sm" ng-click="goInvoices()">View The Invoices</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

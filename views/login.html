@@ -1,0 +1,55 @@
+<div class="container vh-100 d-flex justify-content-center align-items-center"
+     ng-controller="loginCtrl">
+
+    <div class="card shadow" style="width:400px">
+
+        <div class="card-body">
+
+            <h4 class="text-center mb-4">Login</h4>
+
+            <form ng-submit="login()">
+
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email"
+                           class="form-control"
+                           ng-model="loginData.email"
+                           required>
+
+                    <small class="text-danger"
+                           ng-if="error.email">
+                        {{error.email}}
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password"
+                           class="form-control"
+                           ng-model="loginData.password"
+                           required>
+
+                    <small class="text-danger"
+                           ng-if="error.password">
+                        {{error.password}}
+                    </small>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">
+                    Login
+                </button>
+
+                <div class="text-center mt-3">
+                    <small>
+                        Don't have an account?
+                        <a href="#!/signup">Sign Up</a>
+                    </small>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

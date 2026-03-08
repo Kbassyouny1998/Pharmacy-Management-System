@@ -1,0 +1,107 @@
+<div ng-controller="invoicesCtrl">
+
+    <!-- USER VIEW -->
+    <div ng-if="userRole === 'user'">
+        <h2 class="mb-4">My Cart</h2>
+        <h3>Create Invoice</h3>
+
+        <div ng-if="invoiceService.cart.length === 0" class="alert alert-info">
+            Your cart is empty
+        </div>
+
+        <table class="table table-bordered" ng-if="invoiceService.cart.length > 0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Medicine</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in invoiceService.cart">
+                    <td>{{item.name}}</td>
+                    <td>${{item.price}}</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-secondary me-1" ng-click="decrease(item.id)">-</button>
+                            <span>{{item.quantity}}</span>
+                            <button class="btn btn-sm btn-secondary ms-1" ng-click="increase(item.id)">+</button>
+                        </div>
+                    </td>
+                    <td>${{item.price * item.quantity}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" ng-click="removeItem(item.id)">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-end mt-3" ng-if="invoiceService.cart.length > 0">
+            <h4>Total: ${{invoiceService.getTotalPrice()}}</h4>
+            <button class="btn btn-success mt-2" ng-click="checkout(invoiceService.currentUserId)">Checkout</button>
+        </div>
+    </div>
+
+    <!-- ADMIN VIEW -->
+    <div ng-if="userRole === 'admin'">
+        <h3>All Invoices</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="invoice in invoices">
+                    <td>{{invoice.id}}</td>
+                    <td>{{invoice.user_id}}</td>
+                    <td>{{invoice.date | date:'yyyy-MM-dd'}}</td>
+                    <td>${{invoice.total}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" ng-click="viewInvoiceDetails(invoice.id)">
+                            View
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- INVOICE DETAILS MODAL -->
+    <div class="modal fade" id="invoiceDetailsModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Invoice Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Medicine</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in selectedInvoiceItems | orderBy:'-date'">
+                                <td>{{ item.medicine_name }}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>${{item.price}}</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

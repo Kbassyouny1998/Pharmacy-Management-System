@@ -1,0 +1,97 @@
+<html>
+<div ng-controller="addEditCustomerCtrl">
+
+    <h3>Manage Customers</h3>
+
+    <div class="text-end mb-3" ng-if="userRole === 'admin'">
+        <button class="btn btn-success" ng-click="openAddModal()">
+            Add User
+        </button>
+    </div>
+
+    <table class="table table-striped" ng-if="userRole === 'admin' && users.length > 0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.role}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm"
+                            ng-click="openEditModal(user)">
+                        Edit
+                    </button>
+
+                    <button class="btn btn-danger btn-sm ms-1"
+                            ng-click="deleteUser(user)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="alert alert-info" ng-if="userRole !== 'admin'">
+        You do not have permission to view this page.
+    </div>
+
+    <div class="modal fade" id="userModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">{{modalTitle}}</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body" ng-if="userRole === 'admin'">
+                    <form>
+                        <div class="mb-2">
+                            <label>Name</label>
+                            <input type="text" class="form-control" ng-model="modalUser.name">
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Email</label>
+                            <input type="email" class="form-control" ng-model="modalUser.email">
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Password</label>
+                            <input type="text" class="form-control" ng-model="modalUser.password">
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Role</label>
+                            <select class="form-control" ng-model="modalUser.role">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Created At</label>
+                            <input type="date" class="form-control" ng-model="modalUser.created_at">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer" ng-if="userRole === 'admin'">
+                    <button class="btn btn-success" ng-click="saveUser()">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</html>

@@ -1,0 +1,124 @@
+/* Page Background */
+/* Reset margins & padding */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+body{
+background:#f4f6f9;
+font-family:Arial, Helvetica, sans-serif;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* Navbar */
+.navbar{
+box-shadow:0px 3px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand{
+font-size:22px;
+font-weight:bold;
+}
+
+/* Page Title */
+.page-title{
+text-align:center;
+margin-top:30px;
+margin-bottom:20px;
+font-weight:600;
+color:#333;
+}
+
+/* Form Card */
+.form-card{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0px 4px 15px rgba(0,0,0,0.08);
+}
+
+/* Inputs */
+.form-control{
+border-radius:8px;
+}
+
+/* Buttons */
+.btn-primary{
+background:#198754;
+border:none;
+}
+
+.btn-primary:hover{
+background:#157347;
+}
+
+.container{
+flex:1;
+}
+
+/* Footer */
+.footer{
+background:#198754;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:auto; /* important */
+}
+
+
+body {
+    background:#f4f7fb;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* Dashboard container */
+.dashboard-container {
+    margin-top:40px;
+    margin-bottom:40px;
+}
+
+/* Dashboard title */
+.dashboard-title {
+    font-weight:700;
+    margin-bottom:35px;
+    color:#2c3e50;
+}
+
+/* Cards */
+.stat-card {
+    border-radius:12px;
+    transition:all 0.3s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+.stat-card:hover {
+    transform:translateY(-6px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Card text */
+.stat-title { font-size:14px; letter-spacing:1px; }
+.stat-number { font-size:34px; font-weight:bold; margin:10px 0; }
+.stat-desc { font-size:13px; color:#777; }
+
+/* Table title */
+.table-title {
+    margin-bottom:15px;
+    font-weight:600;
+    color:#2c3e50;
+}
+
+/* Table styling */
+.dashboard-table {
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+.dashboard-table th { text-align:center; font-weight:600; }
+.dashboard-table td { text-align:center; vertical-align:middle; }
+
+/* Badge */
+.badge { font-size:14px; padding:6px 10px; }
